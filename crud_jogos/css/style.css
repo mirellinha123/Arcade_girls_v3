@@ -1,0 +1,1540 @@
+:root {
+  --ink: #211b33;
+  --muted: #716b83;
+  --violet: #6d43bc;
+  --violet-dark: #4e328b;
+  --line: #e9e5f3;
+}
+* { box-sizing: border-box; }
+body {
+  padding-top: 94px;
+  background: linear-gradient(150deg, #faf8ff 0%, #f7f7fc 60%, #f8f9fc 100%);
+  color: var(--ink);
+  min-height: 100vh;
+}
+main.container { min-height: calc(100vh - 190px); padding-bottom: 40px; }
+h1, h2, h3, h4 { font-weight: 700; letter-spacing: -.025em; }
+h1 { font-size: clamp(1.7rem, 3vw, 2.25rem); }
+h2 { font-size: clamp(1.5rem, 2.8vw, 1.95rem); }
+hr { border-color: var(--line); opacity: 1; margin: 1rem 0 1.5rem; }
+.navbar-theme {
+  background: linear-gradient(115deg, #2b1d45, #503180 65%, #6842a0);
+  color: white;
+  padding: 14px 0;
+  box-shadow: 0 6px 24px rgba(47, 22, 85, .18);
+}
+.navbar-brand { font-size: 1.2rem; letter-spacing: .035em; }
+.brand-emphasis { color: #d9c0ff; }
+.navbar .nav-link { color: rgba(255,255,255,.85); font-weight: 500; transition: color .15s; }
+.navbar .nav-link:hover, .navbar .nav-link:focus { color: white; }
+.navbar .user-display { opacity: .75; font-size: .9rem; }
+.btn { border-radius: .55rem; font-weight: 600; }
+.btn:focus-visible, .nav-link:focus-visible { outline: 3px solid #b79be6; outline-offset: 2px; }
+.btn-primary, .btn-info { background: var(--violet); border-color: var(--violet); color: white; }
+.btn-primary:hover, .btn-info:hover { background: var(--violet-dark); border-color: var(--violet-dark); color: white; }
+.btn-outline-primary { border-color: var(--violet); color: var(--violet); }
+.btn-outline-primary:hover { background: var(--violet); border-color: var(--violet); color: #fff; }
+.card { border: 1px solid var(--line); border-radius: .95rem; overflow: hidden; box-shadow: 0 7px 25px rgba(48, 33, 91, .045) !important; }
+.card-body { padding: clamp(1rem, 2vw, 1.5rem); }
+.table { margin-bottom: 0; font-size: .95rem; }
+.table thead th { color: #4a4161; background: #f1edf9 !important; border-bottom: 1px solid #e0d8f1; white-space: nowrap; padding: 1rem .8rem; }
+.table tbody td { vertical-align: middle; padding: .85rem .8rem; }
+.table tbody tr:last-child td { border-bottom: 0; }
+.form-control, .form-select { border-radius: .6rem; border-color: #dbd7e7; }
+.form-control:focus, .form-select:focus { border-color: var(--violet); box-shadow: 0 0 0 .22rem rgba(109,67,188,.13); }
+.form-label, label { font-weight: 550; margin-bottom: .45rem; }
+.alert { border-radius: .65rem; }
+.dashboard-card {
+  width: 100%; min-height: 170px; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: .7rem;
+  margin-bottom: 20px; padding: 22px 12px; text-decoration: none;
+  border: 1px solid #e5dcf4; background: #fff !important;
+  color: #543a87 !important; border-radius: .9rem;
+  transition: transform .18s, box-shadow .18s, border-color .18s;
+}
+.dashboard-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(65, 35, 110, .12);
+  border-color: #cab0ee;
+}
+.dashboard-card i { font-size: 2.65rem; margin-bottom: 0; }
+.dashboard-card p { margin: 0; font-size: 1.03rem; font-weight: 650; }
+footer { color: var(--muted); font-size: .88rem; padding-bottom: 16px; }
+@media (max-width: 767px) {
+  body { padding-top: 78px; }
+  .navbar-theme { padding: 12px 0; }
+  .navbar .nav-link { margin: .15rem 0; }
+  .dashboard-card { min-height: 142px; }
+  .table .btn { margin: .12rem 0; }
+}
+/* Fotos de clientes e perfis */
+.foto-mini,
+.foto-grande {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #ded1f4;
+    background: #f0eafb;
+    color: #7352aa;
+    vertical-align: middle;
+}
+
+.foto-mini {
+    width: 46px;
+    height: 46px;
+}
+
+.foto-grande {
+    width: 116px;
+    height: 116px;
+    font-size: 2.5rem;
+}
+
+.foto-sem {
+    font-size: 1.1rem;
+}
+
+.foto-sem.foto-grande {
+    font-size: 2.5rem;
+}
+.navbar .foto-mini {
+    width: 34px;
+    height: 34px;
+}
+
+.navbar .dropdown-menu {
+    border-radius: 12px;
+    padding: 8px;
+    border: 1px solid #e9e0f5;
+}
+
+.navbar .dropdown-item {
+    color: #39225c;
+    border-radius: 7px;
+}
+
+.navbar .dropdown-item:hover {
+    background-color: #f2ecfc;
+    color: #6842a0;
+}
+.navbar-theme .navbar-nav {
+    align-items: center;
+    gap: 8px;
+}
+
+.navbar-theme .nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+}
+
+.navbar-theme .foto-mini {
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+}
+
+@media (max-width: 991px) {
+    .navbar-theme .navbar-nav {
+        align-items: stretch;
+    }
+}
+
+/* LISTAGEM DE CLIENTES */
+
+.clientes-painel {
+    padding-bottom: 2rem;
+}
+
+.clientes-barra {
+    position: relative;
+    background: #fff;
+    border: 1px solid #e7def5;
+    border-radius: 12px;
+}
+
+.clientes-barra > i {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #7653a6;
+    pointer-events: none;
+}
+
+.clientes-barra input.form-control {
+    border: 0;
+    padding: 14px 16px 14px 43px;
+    background: transparent;
+}
+
+.clientes-contagem {
+    font-size: .88rem;
+    color: #797084;
+}
+
+.clientes-lista {
+    display: grid;
+    gap: 12px;
+}
+
+.cliente-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 19px 22px;
+    background: #fff;
+    border: 1px solid #e9e0f4;
+    border-radius: 15px;
+    box-shadow: 0 5px 18px rgba(67, 42, 111, .04);
+    transition: border-color .2s,
+                transform .2s,
+                box-shadow .2s;
+}
+
+.cliente-item:hover {
+    border-color: #cbb8e8;
+    transform: translateY(-1px);
+    box-shadow: 0 9px 24px rgba(67, 42, 111, .09);
+}
+
+.cliente-item[hidden],
+#clientesVazio[hidden] {
+    display: none !important;
+}
+
+.cliente-dados {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    min-width: 0;
+}
+
+.cliente-avatar {
+    flex-shrink: 0;
+}
+
+.cliente-avatar .foto-mini {
+    width: 62px;
+    height: 62px;
+    font-size: 1.4rem;
+}
+
+.cliente-textos {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.cliente-nome {
+    font-size: 1.08rem;
+    font-weight: 700;
+    margin: 0 0 6px;
+    color: #33244d;
+}
+
+.cliente-info {
+    font-size: .88rem;
+    color: #797084;
+}
+
+.cliente-info i {
+    width: 18px;
+    color: #7653a6;
+}
+
+.cliente-acoes {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.cliente-acoes form {
+    margin: 0;
+}
+
+/* Telas pequenas */
+
+@media (max-width: 767px) {
+    .cliente-item {
+        align-items: stretch;
+        flex-direction: column;
+        padding: 16px;
+        gap: 14px;
+    }
+
+    .cliente-acoes {
+        justify-content: flex-end;
+    }
+
+    .cliente-avatar .foto-mini {
+        width: 54px;
+        height: 54px;
+    }
+}
+/*views*/
+
+.detalhe-pagina { padding-bottom: 2rem; }
+
+.detalhe-topo {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-bottom: 24px;
+}
+
+.detalhe-voltar {
+    display: inline-flex;
+    gap: 7px;
+    align-items: center;
+    color: #7653a6;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: .91rem;
+    margin-bottom: 22px;
+}
+.detalhe-voltar:hover { color: #4e328b; text-decoration: underline; }
+.detalhe-sobretitulo {
+    color: #8964b8;
+    text-transform: uppercase;
+    letter-spacing: .13em;
+    font-size: .71rem;
+    font-weight: 800;
+    margin: 0 0 5px;
+}
+.detalhe-intro { color: #797084; margin: 7px 0 0; }
+
+.detalhe-grid {
+    display: grid;
+    grid-template-columns: minmax(230px, .8fr) minmax(0, 1.65fr);
+    gap: 22px;
+    align-items: stretch;
+}
+.detalhe-grid-celular { grid-template-columns: minmax(270px, 1fr) minmax(0, 1.45fr); }
+.detalhe-card {
+    background: #fff;
+    border: 1px solid #e9e0f4;
+    border-radius: 17px;
+    box-shadow: 0 7px 24px rgba(67, 42, 111, .055);
+    padding: clamp(20px, 3vw, 30px);
+    min-width: 0;
+}
+.detalhe-perfil {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 11px;
+    justify-content: center;
+    background: linear-gradient(180deg, #faf7ff 0%, #fff 60%);
+}
+.detalhe-avatar { margin-bottom: 5px; }
+.detalhe-avatar .foto-grande {
+    width: 126px;
+    height: 126px;
+    border: 4px solid #eee4fa;
+    box-shadow: 0 5px 20px rgba(86, 50, 144, .09);
+    object-fit: cover;
+    border-radius: 50%;
+}
+.detalhe-avatar .foto-sem.foto-grande { font-size: 3rem; }
+.detalhe-etiqueta {
+    display: inline-block;
+    color: #7653a6;
+    background: #f0e9fb;
+    border-radius: 999px;
+    padding: 5px 12px;
+    font-size: .75rem;
+    font-weight: 700;
+}
+.detalhe-nome {
+    font-size: clamp(1.2rem, 2vw, 1.55rem);
+    overflow-wrap: anywhere;
+    margin: 0;
+    color: #352451;
+}
+.detalhe-perfil-legenda {
+    margin: 0;
+    color: #81758e;
+    font-size: .88rem;
+}
+.detalhe-papel {
+    display: inline-flex;
+    gap: 6px;
+    align-items: center;
+    padding: 7px 12px;
+    border-radius: 999px;
+    color: #676074;
+    background: #f0eff4;
+    font-weight: 650;
+    font-size: .8rem;
+}
+.detalhe-papel-admin { color: #65409b; background: #ede3fb; }
+
+.detalhe-titulo-secao {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    padding-bottom: 21px;
+    margin-bottom: 22px;
+    border-bottom: 1px solid #eee8f6;
+}
+.detalhe-titulo-secao h3 { margin: 0 0 3px; font-size: 1.12rem; color: #37274e; }
+.detalhe-titulo-secao p { margin: 0; color: #898092; font-size: .86rem; }
+.detalhe-icone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 43px;
+    height: 43px;
+    border-radius: 12px;
+    color: #7045b7;
+    background: #f0e9fb;
+    font-size: 1.22rem;
+}
+.detalhe-campos {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 20px;
+    row-gap: 17px;
+    margin: 0;
+}
+.detalhe-campo {
+    padding: 15px 17px;
+    border: 1px solid #eee8f6;
+    border-radius: 12px;
+    min-width: 0;
+    background: #fcfbfe;
+}
+.detalhe-campo dt {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #81758e;
+    font-weight: 600;
+    font-size: .81rem;
+    margin-bottom: 8px;
+}
+.detalhe-campo dt i { color: #7954b5; width: 15px; text-align: center; }
+.detalhe-campo dd {
+    margin: 0;
+    color: #322548;
+    font-weight: 650;
+    font-size: .96rem;
+    overflow-wrap: anywhere;
+}
+.detalhe-campo-largo { grid-column: 1 / -1; }
+
+.detalhe-foto-produto {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 240px;
+    padding: 15px;
+    background: #fff;
+    border: 1px solid #f0eaf8;
+    border-radius: 15px;
+}
+.detalhe-produto-imagem { width: 100%; height: 245px; object-fit: contain; }
+.detalhe-produto-vazio { color: #a48ec7; font-size: 5rem; }
+
+@media (max-width: 850px) {
+    .detalhe-grid, .detalhe-grid-celular { grid-template-columns: 1fr; }
+    .detalhe-perfil { padding-top: 26px; padding-bottom: 26px; }
+}
+@media (max-width: 575px) {
+    .detalhe-topo .btn { width: 100%; }
+    .detalhe-campos { grid-template-columns: 1fr; }
+    .detalhe-card { padding: 20px; }
+    .detalhe-produto-imagem { height: 210px; }
+}
+/* Complemento das listagens de celulares e usuários.
+   Mantém os estilos de clientes já presentes no style.css. */
+.celular-mini {
+    display: block;
+    width: 76px;
+    height: 76px;
+    object-fit: contain;
+    border-radius: 12px;
+    background: #f4effc;
+    border: 1px solid #e9e0f4;
+    padding: 6px;
+}
+.celular-sem-foto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.2rem;
+    color: #7653a6;
+}
+.cliente-item[hidden], #celularesVazio[hidden], #usuariosVazio[hidden] {
+    display: none !important;
+}
+@media (max-width: 767px) {
+    .celular-mini { width: 64px; height: 64px; }
+}
+/* =============================================================
+   PW CELULARES | REDESIGN DE FORMULÁRIOS · NOV/2026
+   Acrescente este CSS AO FINAL de css/style.css.
+   Não altera PHP, SQL, permissões, envios ou JavaScript.
+   Chrome, Edge, Firefox e Safari atuais (usa :has()).
+   ============================================================= */
+
+:root {
+  --pw-purple: #7044b7;
+  --pw-purple-dark: #4c2f7e;
+  --pw-ink: #2d2342;
+  --pw-muted: #80748e;
+  --pw-border: #e8dff3;
+  --pw-light: #f7f3fc;
+  --pw-shadow: 0 14px 40px rgba(53, 34, 94, .07);
+}
+
+/* 1. Cabeçalhos de NOVO / EDITAR -------------------------------- */
+main.container:has(form[action^="add.php"]),
+main.container:has(form[action^="edit.php"]) {
+  max-width: 1080px;
+}
+main.container:has(form[action^="add.php"]) > h2,
+main.container:has(form[action^="edit.php"]) > h2,
+main.container:has(form[action^="add.php"]) > h1,
+main.container:has(form[action^="edit.php"]) > h1 {
+  color: var(--pw-ink);
+  font-size: clamp(1.65rem, 2.8vw, 2.15rem);
+  letter-spacing: -.035em;
+  margin: 10px 0 8px;
+}
+main.container:has(form[action^="add.php"]) > h2::before,
+main.container:has(form[action^="edit.php"]) > h2::before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 28px;
+  border-radius: 8px;
+  margin-right: 13px;
+  vertical-align: -4px;
+  background: linear-gradient(180deg, #a680ef, #6440ab);
+}
+main.container:has(form[action^="add.php"]) > hr,
+main.container:has(form[action^="edit.php"]) > hr {
+  margin-top: 15px;
+  margin-bottom: 25px;
+  border-color: var(--pw-border);
+}
+
+/* 2. Cartão de formulários de clientes / usuários ---------------- */
+main.container .card:has(form[action^="add.php"]),
+main.container .card:has(form[action^="edit.php"]),
+main.container > form[action^="edit.php"] .card {
+  background: linear-gradient(145deg, #ffffff 0%, #ffffff 75%, #fcfaff 100%);
+  border: 1px solid var(--pw-border);
+  border-radius: 22px;
+  box-shadow: var(--pw-shadow) !important;
+  overflow: visible;
+}
+main.container .card:has(form[action^="add.php"]) > .card-body,
+main.container .card:has(form[action^="edit.php"]) > .card-body,
+main.container > form[action^="edit.php"] .card > .card-body {
+  padding: clamp(22px, 3.7vw, 38px);
+}
+
+/* 3. Celular / add.php normalmente não tem uma div.card ---------- */
+main.container > form[action^="add.php"] {
+  padding: clamp(22px, 3.7vw, 38px);
+  background: linear-gradient(145deg, #ffffff, #fdfbff);
+  border: 1px solid var(--pw-border);
+  border-radius: 22px;
+  box-shadow: var(--pw-shadow);
+}
+main.container > form[action^="add.php"] > hr:first-child,
+main.container > form[action^="add.php"] > input[type="hidden"] + hr {
+  margin-top: 0;
+}
+
+/* 4. Espaçamento dos campos ------------------------------------- */
+main.container:has(form[action^="add.php"]) form :is(.form-group, .mb-3),
+main.container:has(form[action^="edit.php"]) form :is(.form-group, .mb-3) {
+  margin-bottom: 20px !important;
+}
+main.container:has(form[action^="add.php"]) form label,
+main.container:has(form[action^="edit.php"]) form label {
+  display: inline-block;
+  color: #413354;
+  font-size: .91rem;
+  font-weight: 650;
+  margin-bottom: 8px;
+}
+main.container:has(form[action^="add.php"]) form :is(.form-control, .form-select),
+main.container:has(form[action^="edit.php"]) form :is(.form-control, .form-select) {
+  min-height: 48px;
+  border: 1px solid #e1d8ef;
+  border-radius: 12px;
+  background-color: #faf8fe;
+  color: var(--pw-ink);
+  padding: 11px 14px;
+  box-shadow: none;
+  transition: border-color .18s, box-shadow .18s, background-color .18s;
+}
+main.container:has(form[action^="add.php"]) form :is(.form-control, .form-select):focus,
+main.container:has(form[action^="edit.php"]) form :is(.form-control, .form-select):focus {
+  background: #ffffff;
+  border-color: #9e78d7;
+  box-shadow: 0 0 0 4px rgba(112, 68, 183, .12);
+  outline: 0;
+}
+main.container:has(form[action^="add.php"]) form :is(.form-control, .form-select):disabled,
+main.container:has(form[action^="edit.php"]) form :is(.form-control, .form-select):disabled {
+  color: #887e94;
+  background-color: #efedf4;
+}
+main.container:has(form[action^="add.php"]) form :is(small, .text-muted),
+main.container:has(form[action^="edit.php"]) form :is(small, .text-muted) {
+  color: var(--pw-muted) !important;
+  font-size: .8rem;
+  line-height: 1.55;
+}
+
+/* 5. Layout em duas colunas para formulários simples ------------- */
+@media (min-width: 768px) {
+  main.container .card > .card-body > form[action^="add.php"],
+  main.container .card > .card-body > form[action^="edit.php"] {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 22px;
+    align-items: start;
+  }
+  main.container .card > .card-body > form[action^="add.php"] > input[type="hidden"],
+  main.container .card > .card-body > form[action^="edit.php"] > input[type="hidden"] {
+    display: none;
+  }
+  main.container .card > .card-body > form[action^="add.php"] > .mb-3:has(input[name="nome"]),
+  main.container .card > .card-body > form[action^="edit.php"] > .mb-3:has(input[name="nome"]),
+  main.container .card > .card-body > form[action^="add.php"] > .mb-3:has(input[type="file"]),
+  main.container .card > .card-body > form[action^="edit.php"] > .mb-3:has(input[type="file"]),
+  main.container .card > .card-body > form[action^="add.php"] > .mb-3:has(select[name="perfil"]),
+  main.container .card > .card-body > form[action^="edit.php"] > .mb-3:has(select[name="perfil"]),
+  main.container .card > .card-body > form[action^="add.php"] > .alert,
+  main.container .card > .card-body > form[action^="edit.php"] > .alert {
+    grid-column: 1 / -1;
+  }
+}
+
+/* 6. Área de escolha e prévia de foto ---------------------------- */
+main.container:has(form[action^="add.php"]) form .mb-3:has(input[type="file"]),
+main.container:has(form[action^="edit.php"]) form .mb-3:has(input[type="file"]),
+main.container > form[action^="add.php"] .form-group:has(input[type="file"]),
+main.container > form[action^="edit.php"] .col-md-4:has(input[type="file"]) {
+  padding: 19px;
+  background: var(--pw-light);
+  border: 1px dashed #cbb7e9;
+  border-radius: 16px;
+}
+main.container:has(form[action^="add.php"]) input[type="file"],
+main.container:has(form[action^="edit.php"]) input[type="file"] {
+  background: #fff !important;
+  font-size: .88rem;
+}
+main.container:has(form[action^="add.php"]) input[type="file"]::file-selector-button,
+main.container:has(form[action^="edit.php"]) input[type="file"]::file-selector-button {
+  border: 0;
+  background: #e7def5;
+  color: var(--pw-purple-dark);
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin-right: 12px;
+  font-weight: 650;
+}
+main.container:has(form[action^="add.php"]) :is(#preview, #previewFoto),
+main.container:has(form[action^="edit.php"]) :is(#preview, #previewFoto) {
+  border: 3px solid #fff;
+  box-shadow: 0 4px 18px rgba(80, 47, 130, .10);
+  object-fit: cover;
+}
+main.container:has(form[action^="add.php"]) :is(#previewFoto, #fotoAtual) .foto-grande,
+main.container:has(form[action^="edit.php"]) :is(#previewFoto, #fotoAtual) .foto-grande {
+  background: #eee6fa;
+}
+
+/* 7. Títulos de seções de celulares ------------------------------ */
+main.container:has(form[action^="add.php"]) form h4,
+main.container:has(form[action^="edit.php"]) form h4 {
+  color: #473263;
+  font-size: 1.11rem;
+  font-weight: 750;
+  margin-bottom: 20px;
+}
+main.container:has(form[action^="add.php"]) form .row,
+main.container:has(form[action^="edit.php"]) form .row {
+  row-gap: 6px;
+}
+
+/* 8. Botões de salvar e cancelar --------------------------------- */
+main.container:has(form[action^="add.php"]) form button[type="submit"],
+main.container:has(form[action^="edit.php"]) form button[type="submit"] {
+  min-height: 45px;
+  border-radius: 11px;
+  padding: 10px 22px;
+  font-weight: 700;
+  background: #7044b7;
+  border-color: #7044b7;
+  color: #fff;
+}
+main.container:has(form[action^="add.php"]) form button[type="submit"]:hover,
+main.container:has(form[action^="edit.php"]) form button[type="submit"]:hover {
+  background: #57318e;
+  border-color: #57318e;
+}
+main.container:has(form[action^="add.php"]) form a.btn-secondary,
+main.container:has(form[action^="edit.php"]) form a.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 45px;
+  border-radius: 11px;
+  padding: 10px 22px;
+  font-weight: 650;
+  color: #634d7b;
+  background: #efeaf6;
+  border: 1px solid #e4dcf0;
+}
+main.container:has(form[action^="add.php"]) form a.btn-secondary:hover,
+main.container:has(form[action^="edit.php"]) form a.btn-secondary:hover {
+  background: #e1d5f2;
+}
+
+/* 9. Login: um cartão mais elegante e centralizado --------------- */
+main.container:has(form[action*="login.php"]) > .row.justify-content-center {
+  margin-top: clamp(30px, 5vh, 75px) !important;
+  margin-bottom: 60px;
+}
+main.container:has(form[action*="login.php"]) > .row.justify-content-center > [class*="col-md-"] {
+  width: min(100%, 510px);
+  max-width: 510px;
+}
+main.container:has(form[action*="login.php"]) .card {
+  border: 1px solid #e6dcf2;
+  border-radius: 24px;
+  background: radial-gradient(circle at 50% -55%, #f2e9ff 0, #fff 70%);
+  box-shadow: 0 20px 60px rgba(59, 33, 101, .11) !important;
+  overflow: hidden;
+}
+main.container:has(form[action*="login.php"]) .card-body {
+  padding: clamp(28px, 5vw, 48px) !important;
+}
+main.container:has(form[action*="login.php"]) .card-body > h2 {
+  text-align: center;
+  color: #35234e;
+  font-size: clamp(1.8rem, 4vw, 2.25rem);
+  margin: 0 0 26px !important;
+}
+main.container:has(form[action*="login.php"]) .card-body::before {
+  content: "✦";
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 20px;
+  color: #fff;
+  background: linear-gradient(135deg, #ab83ef, #6741ad);
+  font-size: 1.9rem;
+  box-shadow: 0 8px 24px rgba(112, 68, 183, .22);
+  margin: 0 auto 21px;
+}
+/* Caso o login já mostre a foto do perfil, não adicionar decoração repetida */
+main.container:has(form[action*="login.php"]) .card-body:has(.foto-grande)::before {
+  display: none;
+}
+main.container:has(form[action*="login.php"]) .card-body .foto-grande {
+  width: 88px;
+  height: 88px;
+  display: block;
+  margin: 0 auto;
+  border: 3px solid #e7d9f5;
+}
+main.container:has(form[action*="login.php"]) form label {
+  color: #473658;
+  font-weight: 650;
+  font-size: .92rem;
+  margin-bottom: 8px;
+}
+main.container:has(form[action*="login.php"]) form .mb-3 {
+  margin-bottom: 22px !important;
+}
+main.container:has(form[action*="login.php"]) form .form-control {
+  min-height: 53px;
+  border-radius: 12px;
+  border: 1px solid #dfd5ec;
+  background: #faf8ff;
+  padding: 12px 15px;
+}
+main.container:has(form[action*="login.php"]) form .form-control:focus {
+  border-color: #9f80d1;
+  background: white;
+  box-shadow: 0 0 0 4px rgba(112, 68, 183, .11);
+}
+main.container:has(form[action*="login.php"]) form button[type="submit"] {
+  min-height: 50px;
+  border-radius: 12px;
+  font-weight: 750;
+  background: linear-gradient(110deg, #8052ca, #643ba7);
+  border: 0;
+  box-shadow: 0 6px 14px rgba(103, 65, 173, .16);
+}
+main.container:has(form[action*="login.php"]) form button[type="submit"]:hover {
+  background: linear-gradient(110deg, #7543c1, #4e2c8b);
+}
+
+/* 10. Minha Conta: informações e foto centralizadas ------------- */
+main.container:has(form[action*="minha-conta.php"]) {
+  max-width: 860px;
+}
+main.container:has(form[action*="minha-conta.php"]) > h2 {
+  margin-top: 10px;
+  font-size: 2rem;
+  color: var(--pw-ink);
+}
+main.container:has(form[action*="minha-conta.php"]) > .card {
+  border-radius: 23px;
+  border: 1px solid var(--pw-border);
+  box-shadow: var(--pw-shadow) !important;
+}
+main.container:has(form[action*="minha-conta.php"]) > .card > .card-body {
+  padding: clamp(24px, 4vw, 40px);
+}
+main.container:has(form[action*="minha-conta.php"]) #fotoAtual .foto-grande,
+main.container:has(form[action*="minha-conta.php"]) #previewFoto {
+  width: 126px;
+  height: 126px;
+  border: 5px solid #f0e8f9;
+  box-shadow: 0 10px 24px rgba(66, 35, 107, .09);
+  object-fit: cover;
+}
+main.container:has(form[action*="minha-conta.php"]) dl.row {
+  background: #faf8fe;
+  border: 1px solid var(--pw-border);
+  padding: 16px 18px;
+  border-radius: 15px;
+  margin: 20px 0 26px;
+}
+main.container:has(form[action*="minha-conta.php"]) dl.row dt,
+main.container:has(form[action*="minha-conta.php"]) dl.row dd {
+  padding: 9px 8px;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+main.container:has(form[action*="minha-conta.php"]) dl.row dt {
+  color: #716080;
+  font-weight: 600;
+}
+main.container:has(form[action*="minha-conta.php"]) dl.row dd {
+  color: var(--pw-ink);
+  font-weight: 600;
+}
+main.container:has(form[action*="minha-conta.php"]) form {
+  padding: 20px;
+  border-radius: 16px;
+  background: #f9f6fe;
+  border: 1px dashed #d4c3eb;
+}
+main.container:has(form[action*="minha-conta.php"]) form .form-control {
+  min-height: 48px;
+  border-radius: 11px;
+  background: #fff;
+}
+
+/* 11. Modal de confirmação de exclusão -------------------------- */
+.modal .modal-content {
+  border-radius: 20px;
+  border: 1px solid #e9deef;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(34, 20, 57, .16);
+}
+.modal .modal-header {
+  border-bottom: 1px solid #eee7f4;
+  background: #fbf8ff;
+  padding: 20px 24px;
+}
+.modal .modal-title {
+  color: #432851;
+  font-weight: 750;
+  font-size: 1.2rem;
+}
+.modal .modal-body {
+  color: #52465e;
+  padding: 26px 24px 14px;
+}
+.modal .modal-footer {
+  padding: 15px 24px 22px;
+  border-top: none;
+  gap: 8px;
+}
+.modal .modal-footer .btn {
+  padding: 9px 18px;
+  border-radius: 10px;
+}
+
+/* 12. Celular / edição: o cartão de foto também acompanha o tema */
+main.container > form[action^="edit.php"] .col-md-4.text-center:has(input[type="file"]) {
+  background: #faf7ff;
+  border: 1px dashed #d7c7ed;
+  border-radius: 16px;
+  padding: 18px;
+}
+main.container > form[action^="edit.php"] #preview {
+  border-radius: 12px !important;
+  background: #fff;
+  padding: 8px;
+}
+
+/* 13. Responsividade -------------------------------------------- */
+@media (max-width: 767px) {
+  main.container > form[action^="add.php"] { padding: 18px; }
+  main.container .card:has(form[action^="add.php"]) > .card-body,
+  main.container .card:has(form[action^="edit.php"]) > .card-body { padding: 20px; }
+  main.container:has(form[action*="login.php"]) .card-body { padding: 26px !important; }
+  main.container:has(form[action*="minha-conta.php"]) dl.row { padding: 14px; }
+  main.container:has(form[action^="add.php"]) form button[type="submit"],
+  main.container:has(form[action^="edit.php"]) form button[type="submit"] { margin-bottom: 8px; }
+}
+
+/* Respeitar acessibilidade: sem transições se houver preferência */
+@media (prefers-reduced-motion: reduce) {
+  main.container:has(form[action^="add.php"]) form *,
+  main.container:has(form[action^="edit.php"]) form * { transition: none !important; }
+}
+/* ===== BRAND / LOGO NAVBAR ===== */
+.brand-sistema {
+    text-decoration: none;
+    color: #fff !important;
+}
+
+.brand-icone {
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #8c63d9, #5f35a6);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 18px rgba(50, 20, 95, 0.22);
+    flex-shrink: 0;
+}
+
+.brand-icone i {
+    color: #fff;
+    font-size: 1.25rem;
+}
+
+.brand-texto {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.05;
+}
+
+.brand-texto strong {
+    font-size: 1.08rem;
+    letter-spacing: 0.04em;
+    color: #fff;
+}
+
+.brand-texto small {
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.72);
+    font-weight: 500;
+}
+
+@media (max-width: 991px) {
+    .brand-texto small {
+        display: none;
+    }
+}
+/* ============================================================
+   PW | HARMONIZACAO DAS PAGINAS VISUALIZAR - NOV/2026
+   Colar AO FINAL de css/style.css, depois do CSS dos formularios.
+   Feito para as paginas clientes/view.php, celular/view.php e
+   usuarios/view.php do redesign anterior, com classes detalhe-*.
+   Apenas aparencia: nao altera PHP, validacoes nem permissoes.
+   ============================================================ */
+
+/* Area de detalhes: usa o mesmo respiro dos formularios novos */
+main.container:has(.detalhe-pagina) {
+  max-width: 1160px;
+}
+
+.detalhe-pagina {
+  padding: 6px 0 40px;
+  color: var(--pw-ink, #2d2342);
+}
+
+/* Cabecalho elegante com mesma linguagem do novo cadastro */
+.detalhe-topo {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-bottom: 26px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #e8dff3;
+}
+.detalhe-topo h2 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin: 0;
+  font-size: clamp(1.7rem, 3vw, 2.15rem);
+  font-weight: 750;
+  letter-spacing: -.035em;
+  color: #2d2342;
+}
+.detalhe-topo h2::before {
+  content: "";
+  flex: 0 0 10px;
+  width: 10px;
+  height: 30px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #ad89ee, #6440ab);
+}
+.detalhe-voltar {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 18px;
+  text-decoration: none;
+  color: #7653a6;
+  font-size: .9rem;
+  font-weight: 650;
+  transition: color .16s ease;
+}
+.detalhe-voltar:hover,
+.detalhe-voltar:focus-visible {
+  color: #4c2f7e;
+  text-decoration: underline;
+}
+.detalhe-sobretitulo {
+  margin: 0 0 7px;
+  color: #8a69ba;
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.detalhe-intro {
+  margin: 12px 0 0;
+  color: #80748e;
+  font-size: .94rem;
+}
+
+/* Botao editar igual ao salvar dos formularios */
+.detalhe-topo .btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 47px;
+  padding: 11px 20px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(110deg, #8052ca, #643ba7);
+  box-shadow: 0 7px 16px rgba(103, 65, 173, .18);
+  color: #fff;
+  font-weight: 750;
+  text-decoration: none;
+}
+.detalhe-topo .btn-primary:hover,
+.detalhe-topo .btn-primary:focus-visible {
+  background: linear-gradient(110deg, #7543c1, #4e2c8b);
+  color: #fff;
+}
+
+/* Mesmo cartao branco suave do cadastro e do login */
+.detalhe-grid,
+.detalhe-grid-celular {
+  display: grid;
+  grid-template-columns: minmax(250px, .82fr) minmax(0, 1.55fr);
+  gap: 22px;
+  align-items: stretch;
+}
+.detalhe-grid-celular {
+  grid-template-columns: minmax(290px, 1.05fr) minmax(0, 1.4fr);
+}
+.detalhe-card {
+  position: relative;
+  min-width: 0;
+  padding: clamp(24px, 3.3vw, 39px);
+  border: 1px solid #e8dff3;
+  border-radius: 23px;
+  background: linear-gradient(145deg, #fff 0%, #fff 72%, #fcfaff 100%);
+  box-shadow: 0 14px 40px rgba(53, 34, 94, .07);
+}
+
+/* Cartao de foto / perfil com faixa lilas discreta */
+.detalhe-perfil {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  text-align: center;
+  background: radial-gradient(circle at 50% -15%, #f0e7ff 0, #faf7ff 38%, #fff 77%);
+}
+.detalhe-perfil::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, #b697ef, #8156c7, #603a9e);
+}
+.detalhe-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0 6px;
+}
+.detalhe-avatar .foto-grande {
+  width: 144px;
+  height: 144px;
+  border: 5px solid #fff;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #ede4f9;
+  box-shadow: 0 10px 28px rgba(71, 42, 116, .15), 0 0 0 1px #e8dbf5;
+}
+.detalhe-avatar .foto-sem.foto-grande {
+  font-size: 3.5rem;
+}
+.detalhe-etiqueta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 14px;
+  color: #633b9d;
+  background: #eee6fa;
+  border: 1px solid #e5d8f5;
+  border-radius: 999px;
+  font-size: .76rem;
+  font-weight: 750;
+}
+.detalhe-nome {
+  margin: 4px 0 0;
+  color: #33224d;
+  font-size: clamp(1.3rem, 2.2vw, 1.8rem);
+  font-weight: 750;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+.detalhe-perfil-legenda {
+  margin: 0;
+  color: #80748e;
+  font-size: .89rem;
+}
+.detalhe-papel {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 14px;
+  background: #f0eff4;
+  border-radius: 999px;
+  color: #5c5468;
+  font-size: .8rem;
+  font-weight: 700;
+}
+.detalhe-papel-admin {
+  color: #633b9d;
+  background: #eee6fa;
+}
+
+/* Bloco direito: titulo e campos com as cores dos formularios */
+.detalhe-informacoes {
+  background: linear-gradient(145deg, #fff, #fefcff);
+}
+.detalhe-titulo-secao {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding-bottom: 22px;
+  margin-bottom: 22px;
+  border-bottom: 1px solid #eee7f6;
+}
+.detalhe-icone {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 50px;
+  width: 50px;
+  height: 50px;
+  border-radius: 15px;
+  color: #fff;
+  background: linear-gradient(135deg, #ad89ee, #7045b7);
+  box-shadow: 0 7px 18px rgba(103, 65, 173, .15);
+  font-size: 1.3rem;
+}
+.detalhe-titulo-secao h3 {
+  margin: 0 0 5px;
+  color: #382550;
+  font-size: 1.18rem;
+  font-weight: 750;
+}
+.detalhe-titulo-secao p {
+  margin: 0;
+  color: #898092;
+  font-size: .87rem;
+}
+.detalhe-campos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px;
+  margin: 0;
+}
+.detalhe-campo {
+  min-width: 0;
+  padding: 18px 19px;
+  border: 1px solid #eae1f5;
+  border-radius: 14px;
+  background: #faf8fe;
+  transition: border-color .16s ease, background-color .16s ease;
+}
+.detalhe-campo dt {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 10px;
+  font-size: .82rem;
+  font-weight: 650;
+  color: #7c6c8c;
+}
+.detalhe-campo dt i {
+  width: 17px;
+  text-align: center;
+  color: #7954b5;
+}
+.detalhe-campo dd {
+  margin: 0;
+  color: #332449;
+  font-size: .97rem;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+.detalhe-campo-largo { grid-column: 1 / -1; }
+
+/* Foto de celular em vitrine - preserva imagem original */
+.detalhe-foto-produto {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 282px;
+  padding: 24px;
+  border: 1px solid #ece4f6;
+  border-radius: 19px;
+  background: #fff;
+  box-shadow: inset 0 0 0 5px rgba(248, 244, 253, .65);
+}
+.detalhe-produto-imagem {
+  display: block;
+  max-width: 100%;
+  height: 260px;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 10px rgba(45, 27, 79, .07));
+}
+.detalhe-produto-vazio {
+  color: #a38bc4;
+  font-size: 5rem;
+}
+.detalhe-produto .detalhe-nome { margin-top: 7px; }
+
+@media (max-width: 850px) {
+  .detalhe-grid,
+  .detalhe-grid-celular { grid-template-columns: minmax(0, 1fr); }
+  .detalhe-perfil { padding-top: 30px; padding-bottom: 30px; }
+}
+@media (max-width: 575px) {
+  .detalhe-topo .btn-primary { width: 100%; }
+  .detalhe-card { padding: 22px 19px; }
+  .detalhe-campos { grid-template-columns: minmax(0, 1fr); }
+  .detalhe-titulo-secao { align-items: flex-start; }
+  .detalhe-produto-imagem { height: 205px; }
+  .detalhe-foto-produto { min-height: 228px; }
+  .detalhe-avatar .foto-grande { width: 120px; height: 120px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .detalhe-pagina * { transition: none !important; }
+}
+
+/* ============================================================
+   PW | EDITAR CLIENTES E USUÁRIOS NO ESTILO DE EDITAR CELULAR
+   Bloco de edição de clientes e usuários, integrado ao style.css.
+   Não substitui PHP, banco de dados nem JavaScript.
+   Funciona com os campos existentes nos edit.php (Bootstrap 5).
+   ============================================================ */
+
+/* As páginas de clientes/usuarios ficam largas como a de celular. */
+main.container:has(.card-body > form[action^="edit.php"] input[name="telefone"]),
+main.container:has(.card-body > form[action^="edit.php"] select[name="perfil"]) {
+    max-width: 1320px;
+}
+
+/* O cartão principal segue a identidade visual dos formulários. */
+main.container .card:has(> .card-body > form[action^="edit.php"] input[name="telefone"]),
+main.container .card:has(> .card-body > form[action^="edit.php"] select[name="perfil"]) {
+    border-radius: 24px;
+    border: 1px solid #e7dcf4;
+    background: linear-gradient(145deg, #fff, #fff 82%, #fcfaff);
+    box-shadow: 0 14px 40px rgba(53, 34, 94, .07) !important;
+}
+
+/* Em telas grandes: dados à esquerda, foto à direita. */
+@media (min-width: 992px) {
+    main.container .card-body > form[action^="edit.php"]:is(
+        :has(input[name="telefone"]),
+        :has(select[name="perfil"])
+    ) {
+        display: grid;
+        grid-template-columns: 150px 150px minmax(0, 1fr) minmax(250px, 32%);
+        column-gap: 20px;
+        row-gap: 16px;
+        align-items: start;
+    }
+
+    /* Título do bloco, como "Informações do Celular". */
+    main.container .card-body > form[action^="edit.php"]:has(input[name="telefone"])::before {
+        content: "Informações do Cliente";
+        grid-column: 1 / 4;
+        grid-row: 1;
+    }
+    main.container .card-body > form[action^="edit.php"]:has(select[name="perfil"])::before {
+        content: "Informações do Usuário";
+        grid-column: 1 / 4;
+        grid-row: 1;
+    }
+    main.container .card-body > form[action^="edit.php"]:is(
+        :has(input[name="telefone"]),
+        :has(select[name="perfil"])
+    )::before {
+        color: #463263;
+        font-size: 1.12rem;
+        font-weight: 750;
+        align-self: center;
+        padding-bottom: 4px;
+    }
+
+    /* Linha divisória antes dos botões, igual à de Editar Celular. */
+    main.container .card-body > form[action^="edit.php"]:is(
+        :has(input[name="telefone"]),
+        :has(select[name="perfil"])
+    )::after {
+        content: "";
+        grid-column: 1 / -1;
+        height: 1px;
+        background: #e9dff4;
+        margin-top: 12px;
+        width: 100%;
+    }
+
+    /* ---- Cliente: Nome na largura esquerda; E-mail e Telefone lado a lado. ---- */
+    main.container .card-body > form[action^="edit.php"]:has(input[name="telefone"]) > .mb-3:has(input[name="nome"]) {
+        grid-column: 1 / 4;
+        grid-row: 2;
+    }
+    main.container .card-body > form[action^="edit.php"]:has(input[name="telefone"]) > .mb-3:has(input[name="email"]) {
+        grid-column: 1 / 3;
+        grid-row: 3;
+    }
+    main.container .card-body > form[action^="edit.php"]:has(input[name="telefone"]) > .mb-3:has(input[name="telefone"]) {
+        grid-column: 3 / 4;
+        grid-row: 3;
+    }
+    main.container .card-body > form[action^="edit.php"]:has(input[name="telefone"]) > .mb-3:has(input[type="file"]) {
+        grid-column: 4;
+        grid-row: 1 / 4;
+    }
+    main.container .card-body > form[action^="edit.php"]:has(input[name="telefone"])::after {
+        grid-row: 4;
+    }
+    main.container .card-body > form[action^="edit.php"]:has(input[name="telefone"]) > button[type="submit"],
+    main.container .card-body > form[action^="edit.php"]:has(input[name="telefone"]) > a.btn {
+        grid-row: 5;
+    }
+
+    /* ---- Usuário: mesmos grupos, com perfil e senhas. ---- */
+    main.container .card-body > form[action^="edit.php"]:has(select[name="perfil"]) > .mb-3:has(input[name="nome"]) {
+        grid-column: 1 / 4;
+        grid-row: 2;
+    }
+    main.container .card-body > form[action^="edit.php"]:has(select[name="perfil"]) > .mb-3:has(input[name="email"]) {
+        grid-column: 1 / 4;
+        grid-row: 3;
+    }
+    main.container .card-body > form[action^="edit.php"]:has(select[name="perfil"]) > .mb-3:has(select[name="perfil"]) {
+        grid-column: 1 / 4;
+        grid-row: 4;
+    }
+    main.container .card-body > form[action^="edit.php"]:has(select[name="perfil"]) > .mb-3:has(input[name="senha"]) {
+        grid-column: 1 / 3;
+        grid-row: 5;
+    }
+    main.container .card-body > form[action^="edit.php"]:has(select[name="perfil"]) > .mb-3:has(input[name="confirmacao"]) {
+        grid-column: 3 / 4;
+        grid-row: 5;
+    }
+    main.container .card-body > form[action^="edit.php"]:has(select[name="perfil"]) > .mb-3:has(input[type="file"]) {
+        grid-column: 4;
+        grid-row: 1 / 6;
+    }
+    main.container .card-body > form[action^="edit.php"]:has(select[name="perfil"])::after {
+        grid-row: 6;
+    }
+    main.container .card-body > form[action^="edit.php"]:has(select[name="perfil"]) > button[type="submit"],
+    main.container .card-body > form[action^="edit.php"]:has(select[name="perfil"]) > a.btn {
+        grid-row: 7;
+    }
+
+    /* Botões compactos e lado a lado no rodapé. */
+    main.container .card-body > form[action^="edit.php"]:is(
+        :has(input[name="telefone"]),
+        :has(select[name="perfil"])
+    ) > button[type="submit"] {
+        grid-column: 1;
+        justify-self: start;
+        min-width: 138px;
+    }
+    main.container .card-body > form[action^="edit.php"]:is(
+        :has(input[name="telefone"]),
+        :has(select[name="perfil"])
+    ) > a.btn {
+        grid-column: 2;
+        justify-self: start;
+        min-width: 138px;
+        text-align: center;
+    }
+}
+
+/* Painel de foto lateral. Mantém os IDs usados pelo preview de JS. */
+main.container .card-body > form[action^="edit.php"]:is(
+    :has(input[name="telefone"]),
+    :has(select[name="perfil"])
+) > .mb-3:has(input[type="file"]) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+    padding: 24px;
+    border: 1px dashed #ccb7eb;
+    border-radius: 20px;
+    background: #faf6ff;
+    text-align: center;
+    min-height: 340px;
+    margin-bottom: 0 !important;
+}
+main.container .card-body > form[action^="edit.php"]:is(
+    :has(input[name="telefone"]),
+    :has(select[name="perfil"])
+) > .mb-3:has(input[type="file"]) > label {
+    font-size: 1.12rem;
+    color: #463263;
+    font-weight: 750;
+    margin-bottom: 0;
+}
+main.container .card-body > form[action^="edit.php"]:is(
+    :has(input[name="telefone"]),
+    :has(select[name="perfil"])
+) #fotoAtual {
+    width: 100%;
+    margin: 0 !important;
+    padding: 18px 12px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 7px 24px rgba(70, 40, 111, .08);
+}
+main.container .card-body > form[action^="edit.php"]:is(
+    :has(input[name="telefone"]),
+    :has(select[name="perfil"])
+) :is(#fotoAtual .foto-grande, #previewFoto.foto-grande) {
+    width: 164px;
+    height: 164px;
+    max-width: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    vertical-align: middle;
+}
+main.container .card-body > form[action^="edit.php"]:is(
+    :has(input[name="telefone"]),
+    :has(select[name="perfil"])
+) #previewFoto {
+    margin-inline: auto;
+    border: 5px solid #fff;
+    box-shadow: 0 7px 24px rgba(70, 40, 111, .08);
+}
+main.container .card-body > form[action^="edit.php"]:is(
+    :has(input[name="telefone"]),
+    :has(select[name="perfil"])
+) input[type="file"] {
+    width: 100%;
+    min-width: 0;
+}
+main.container .card-body > form[action^="edit.php"]:is(
+    :has(input[name="telefone"]),
+    :has(select[name="perfil"])
+) small {
+    line-height: 1.5;
+    max-width: 320px;
+}
+
+/* Responsivo: em tablets e celulares, volta a empilhar os campos. */
+@media (max-width: 991px) {
+    main.container .card-body > form[action^="edit.php"]:is(
+        :has(input[name="telefone"]),
+        :has(select[name="perfil"])
+    ) {
+        display: block;
+    }
+    main.container .card-body > form[action^="edit.php"]:is(
+        :has(input[name="telefone"]),
+        :has(select[name="perfil"])
+    )::before {
+        content: "Informações do cadastro";
+        display: block;
+        margin-bottom: 22px;
+        color: #463263;
+        font-size: 1.12rem;
+        font-weight: 750;
+    }
+    main.container .card-body > form[action^="edit.php"]:is(
+        :has(input[name="telefone"]),
+        :has(select[name="perfil"])
+    )::after {
+        content: "";
+        display: block;
+        border-top: 1px solid #e9dff4;
+        margin: 22px 0;
+    }
+    main.container .card-body > form[action^="edit.php"]:is(
+        :has(input[name="telefone"]),
+        :has(select[name="perfil"])
+    ) > .mb-3:has(input[type="file"]) {
+        margin: 18px 0 !important;
+    }
+    main.container .card-body > form[action^="edit.php"]:is(
+        :has(input[name="telefone"]),
+        :has(select[name="perfil"])
+    ) > :is(button[type="submit"], a.btn) {
+        min-width: 125px;
+        margin-right: 8px;
+        margin-bottom: 8px;
+    }
+}
+
